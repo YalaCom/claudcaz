@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>FitCasino — RTP и правила</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">FC</div>
+      <div class="brand-name">RTP и правила</div>
+    </div>
+    <div class="wallet-chip"><span class="coin"></span><span class="val">0</span></div>
+  </div>
+
+  <div style="padding:6px 18px 24px;display:flex;flex-direction:column;gap:14px;">
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;">Единая математика для всех игр</h3>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.6;margin:0;">
+        Все 7 слотов FitCasino используют одну и ту же проверенную математическую модель —
+        отличаются только тема, оформление символов и название. Ни один слот не «подкручен»
+        сильнее другого, и админ-панель сайта не имеет возможности менять шансы или RTP —
+        только управлять демо-балансами игроков.
+      </p>
+    </div>
+
+    <div class="stat-grid" style="padding:0;">
+      <div class="stat-card"><div class="n">96.32%</div><div class="l">Теоретический RTP</div></div>
+      <div class="stat-card"><div class="n">41%</div><div class="l">Частота выплат</div></div>
+      <div class="stat-card"><div class="n">20</div><div class="l">Линий выплат</div></div>
+      <div class="stat-card"><div class="n">5×3</div><div class="l">Игровое поле</div></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;">Как получено значение RTP</h3>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.6;">
+        Значение 96.32% — результат офлайн-симуляции методом Монте-Карло:
+        500 000 виртуальных вращений на зафиксированной таблице весов символов
+        и таблице выплат (см. ниже). Генератор случайных чисел на странице игры
+        использует ту же таблицу весов, что и симулятор — вероятности выпадения
+        символов не меняются во время игры и не зависят от истории вращений,
+        баланса игрока или действий администратора.
+      </p>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.6;">
+        Это демонстрационная модель для учебного/портфолио-проекта, а не аттестованный
+        продукт для игры на реальные деньги — независимого аудита (eCOGRA/iTech Labs и т.п.)
+        она не проходила.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;">Механики</h3>
+      <ul style="color:var(--ink-2);font-size:13.5px;line-height:1.9;margin:0;padding-left:18px;">
+        <li><b style="color:var(--ink-0);">Wild</b> — заменяет любой символ, кроме Scatter.</li>
+        <li><b style="color:var(--ink-0);">Scatter</b> — оплачивается при любом расположении на поле; 3/4/5 символов запускают 10/15/20 фриспинов.</li>
+        <li><b style="color:var(--ink-0);">Ретригер</b> — во время фриспинов новый Scatter-триггер добавляет ещё вращений.</li>
+        <li><b style="color:var(--ink-0);">Bonus Buy</b> — мгновенный запуск фриспинов за фиксированную цену (×12 от ставки). Цена рассчитана так, чтобы RTP покупки соответствовал общему RTP игры.</li>
+        <li><b style="color:var(--ink-0);">Автовращения</b> — 10/25/50/100 вращений подряд с автостопом при нехватке фишек.</li>
+        <li><b style="color:var(--ink-0);">Каскад (только в отмеченных слотах)</b> — визуальный эффект после выигрыша; не создаёт дополнительных выплат.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;">Важно</h3>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.6;margin:0;">
+        FitCasino — демонстрационная площадка. Баланс — условные фишки без денежной стоимости,
+        вывод средств невозможен, реальные платежи не принимаются и не запрашиваются.
+        Если азартные игры вызывают у вас беспокойство, в РФ можно обратиться на горячую линию
+        помощи зависимым 8-800-200-0-200.
+      </p>
+    </div>
+
+  </div>
+
+  <div style="flex:1"></div>
+  <div id="navSlot"></div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/app-common.js"></script>
+<script>
+  (function(){
+    const u = guardAuth();
+    if(!u) return;
+    renderWalletChip(u);
+    document.getElementById('navSlot').innerHTML = navHTML('rtp', u.isAdmin);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>FitCasino — Профиль</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">FC</div>
+      <div class="brand-name">Профиль</div>
+    </div>
+    <div class="wallet-chip"><span class="coin"></span><span class="val">0</span></div>
+  </div>
+
+  <div style="padding:6px 18px 0;">
+    <div class="card" style="display:flex;align-items:center;gap:14px;">
+      <div class="user-avatar" style="width:52px;height:52px;font-size:18px;" id="avatarInit">?</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-family:var(--font-display);font-size:18px;font-weight:600;display:flex;align-items:center;gap:8px;" id="pUsername">—</div>
+        <div style="font-size:12px;color:var(--ink-2);" id="pSince">—</div>
+      </div>
+      <span class="tag-admin" id="adminTag" style="display:none;">Admin</span>
+    </div>
+  </div>
+
+  <div class="stat-grid" style="margin-top:14px;">
+    <div class="stat-card"><div class="n" id="statBalance">0</div><div class="l">Баланс</div></div>
+    <div class="stat-card"><div class="n" id="statSpins">0</div><div class="l">Вращений</div></div>
+    <div class="stat-card"><div class="n" id="statWagered">0</div><div class="l">Всего ставок</div></div>
+    <div class="stat-card"><div class="n" id="statWon">0</div><div class="l">Всего выиграно</div></div>
+  </div>
+
+  <div style="padding:16px 18px 0;">
+    <button class="btn btn-violet btn-block" id="btnTopUp">Пополнить демо-баланс +5000</button>
+    <p class="fine-print" style="margin-top:8px;">Это условная игровая валюта. Пополнение бесплатно, реальные деньги нигде не участвуют.</p>
+  </div>
+
+  <div class="section-title"><h2>История</h2><span id="histCount"></span></div>
+  <div class="panel" style="margin:0 18px;padding:4px 14px;" id="histList"></div>
+
+  <div style="padding:18px;">
+    <button class="btn btn-ghost btn-block" id="btnLogout">Выйти из аккаунта</button>
+  </div>
+
+  <div style="flex:1"></div>
+  <div id="navSlot"></div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app-common.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

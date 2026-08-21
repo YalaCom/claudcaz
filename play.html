@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>FitCasino — Игра</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <div class="game-top">
+    <a href="lobby.html" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg></a>
+    <div class="game-title">
+      <div class="name" id="gameName">—</div>
+      <div class="rtp" id="gameRtp">RTP —%</div>
+    </div>
+    <div class="icon-btn" id="btnPaytable"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v5h5"/></svg></div>
+    <div class="wallet-chip"><span class="coin"></span><span class="val">0</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="reel-frame" id="reelFrame">
+      <div class="reels" id="reels"></div>
+      <div class="win-banner" id="winBanner">
+        <div class="lbl" id="winLbl">Выигрыш</div>
+        <div class="amt" id="winAmt">0</div>
+      </div>
+      <div class="burst-layer" id="burstLayer"></div>
+    </div>
+    <div class="feature-strip">
+      <span id="hitFreqLbl">Частота выплат 41%</span>
+      <span class="fs-pill" id="fsPill" style="display:none;">Фриспины: <b id="fsCount">0</b></span>
+    </div>
+  </div>
+
+  <div style="flex:1"></div>
+
+  <div class="controls">
+    <div class="bet-row">
+      <div class="bet-box">
+        <div>
+          <div class="lab">Ставка</div>
+          <div class="val" id="betVal">10.00</div>
+        </div>
+        <div class="stepper">
+          <button id="betMinus">−</button>
+          <button id="betPlus">+</button>
+        </div>
+      </div>
+      <div class="mini-btn" id="btnBonusBuy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5Z"/></svg>
+        Buy
+      </div>
+    </div>
+    <div class="action-row">
+      <div class="mini-btn" id="btnAutoOpen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        Авто
+      </div>
+      <button class="spin-btn" id="btnSpin">Крутить</button>
+    </div>
+  </div>
+
+  <div id="navSlot"></div>
+</div>
+
+<!-- Autospin sheet -->
+<div class="sheet-backdrop" id="autoBackdrop"></div>
+<div class="sheet" id="autoSheet">
+  <div class="sheet-handle"></div>
+  <h3>Автовращение</h3>
+  <p class="desc">Выберите количество автоматических вращений подряд. Остановится раньше при недостатке фишек или крупном выигрыше.</p>
+  <div class="autospin-grid">
+    <button data-n="10">10</button>
+    <button data-n="25">25</button>
+    <button data-n="50">50</button>
+    <button data-n="100">100</button>
+  </div>
+  <button class="btn btn-violet btn-block" id="btnStartAuto">Запустить</button>
+</div>
+
+<!-- Bonus Buy sheet -->
+<div class="sheet-backdrop" id="bbBackdrop"></div>
+<div class="sheet" id="bbSheet">
+  <div class="sheet-handle"></div>
+  <h3>Покупка бонуса</h3>
+  <p class="desc" id="bbDesc"></p>
+  <button class="btn btn-gold btn-block" id="btnConfirmBB">Купить и запустить</button>
+  <button class="btn btn-ghost btn-block" style="margin-top:10px;" id="btnCancelBB">Отмена</button>
+</div>
+
+<!-- Paytable sheet -->
+<div class="sheet-backdrop" id="ptBackdrop"></div>
+<div class="sheet" id="ptSheet" style="max-height:75vh;">
+  <div class="sheet-handle"></div>
+  <h3>Таблица выплат</h3>
+  <p class="desc">Множитель применяется к ставке. Значения — за 3 / 4 / 5 символов на линии.</p>
+  <div id="ptList"></div>
+  <div class="divider"></div>
+  <p class="desc" style="margin:0;">20 фиксированных линий выплат. Scatter оплачивается при любом расположении и запускает фриспины: 3 → 10, 4 → 15, 5 → 20 вращений.</p>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app-common.js"></script>
+<script src="js/slots-config.js"></script>
+<script src="js/symbols.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/play.js"></script>
+</body>
+</html>

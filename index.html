@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>FitCasino — Вход</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="auth-wrap">
+    <div class="auth-hero">
+      <div class="brand-mark">FC</div>
+      <h1>Fit<em style="color:var(--gold)">Casino</em></h1>
+      <p>Игровая витрина слотов на условные фишки.<br>Без реальных денег и вывода средств.</p>
+    </div>
+
+    <div class="tabbar">
+      <button id="tabLogin" class="active">Вход</button>
+      <button id="tabRegister">Регистрация</button>
+    </div>
+
+    <form id="loginForm" class="card" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="field">
+        <label>Логин</label>
+        <input id="loginUser" type="text" autocomplete="username" placeholder="ваш логин">
+      </div>
+      <div class="field">
+        <label>Пароль</label>
+        <input id="loginPass" type="password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <div id="loginMsg" class="form-msg error"></div>
+      <button type="submit" class="btn btn-gold btn-block">Войти</button>
+    </form>
+
+    <form id="registerForm" class="card" style="display:none;flex-direction:column;gap:14px;">
+      <div class="field">
+        <label>Придумайте логин</label>
+        <input id="regUser" type="text" autocomplete="username" placeholder="от 3 символов">
+      </div>
+      <div class="field">
+        <label>Придумайте пароль</label>
+        <input id="regPass" type="password" autocomplete="new-password" placeholder="от 4 символов">
+      </div>
+      <div id="registerMsg" class="form-msg error"></div>
+      <button type="submit" class="btn btn-gold btn-block">Создать аккаунт</button>
+      <p class="fine-print">Первый зарегистрированный на этом сайте аккаунт автоматически получает права администратора.</p>
+    </form>
+
+    <p class="fine-print">Регистрируясь, вы подтверждаете, что вам есть 18&nbsp;лет.<br>Это демо-платформа: баланс — условные фишки, реальные платежи не принимаются.</p>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app-common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
